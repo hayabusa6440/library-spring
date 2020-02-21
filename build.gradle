@@ -1,0 +1,27 @@
+apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'java-library'
+
+
+buildscript {
+       repositories {
+             jcenter()
+       }
+       dependencies {
+             classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+       }
+}
+
+
+dependencies {
+         def tomcatVersion = '9.0.30'
+         tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+         "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+         "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+
+
+tomcat {
+         httpPort = 8080
+         enableSSL = true
+         contextPath = '/library-spring'
+}
