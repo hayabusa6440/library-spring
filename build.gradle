@@ -1,27 +1,24 @@
-apply plugin: 'com.bmuschko.tomcat'
-apply plugin: 'java-library'
-
-
-buildscript {
-       repositories {
-             jcenter()
-       }
-       dependencies {
-             classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
-       }
+plugins {
+  id "java"
+  id "org.gretty" version "3.0.1"
+  id "war"
 }
 
-
-dependencies {
-         def tomcatVersion = '9.0.30'
-         tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-         "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
-         "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+repositories {
+    jcenter()
 }
 
+//buildscript {
+       //repositories {
+             //jcenter()
+       //}
+       //dependencies {
+	     //classpath 'org.gretty:gretty:+'
+       //}
+//}
 
-tomcat {
+gretty {
          httpPort = 8080
-         enableSSL = true
+	 servletContainer = 'tomcat9'
          contextPath = '/library-spring'
 }
