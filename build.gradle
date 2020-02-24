@@ -18,7 +18,7 @@ repositories {
 //}
 
 gretty {
-         httpPort = 8080
+         httpPort = 8085
 	 servletContainer = 'tomcat9'
          contextPath = '/library-spring'
 }
